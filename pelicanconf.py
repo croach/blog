@@ -45,3 +45,6 @@ PLUGINS = ('ipynb.markup',)
 
 # Turn off categories
 DISPLAY_CATEGORIES_ON_MENU = False
+
+THEME = "themes/my-blog-theme"
+IPYNB_IGNORE_CSS = True
