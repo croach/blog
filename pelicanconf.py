@@ -29,13 +29,15 @@ AUTHOR_FEED_RSS = None
 # SOCIAL = (('You can add links in your config file', '#'),
 #           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_METADATA = {
+    'status': 'draft',
+}
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
 # Prevent pelican from trying to parse notebook checkpoint files
-IGNORE_FILES = ['.ipynb_checkpoints']
+IGNORE_FILES = ['.ipynb_checkpoints', 'README.md']
 
 # Which files are considered to be markdown files
 MARKUP = ('md', 'ipynb')
