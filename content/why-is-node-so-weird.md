@@ -1,8 +1,8 @@
 Title: Why is Programming in Node So Different?
 Slug: why-is-node-different
 Date: 2013-03-24
-Category: posts
-Tags: node
+Category: node
+Status: published
 Author: Christopher Roach
 Summary: A post on the differences between node and traditional web server technology (i.e., an explanation of the node event loop).
 

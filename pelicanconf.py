@@ -43,8 +43,11 @@ MARKUP = ('md', 'ipynb')
 PLUGIN_PATHS = ('./plugins',)
 PLUGINS = ('ipynb.markup',)
 
-# Turn off categories
-DISPLAY_CATEGORIES_ON_MENU = False
+# Turn on categories
+DISPLAY_CATEGORIES_ON_MENU = True
+
+# Get rid of the index pages for tags and categories
+DIRECT_TEMPLATES = ['index', 'archives']
 
 THEME = "themes/my-blog-theme"
 IPYNB_IGNORE_CSS = True

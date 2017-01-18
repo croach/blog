@@ -2,8 +2,8 @@ Title: My First Sublime Text Plugin
 Subtitle: Hide Tabs
 Slug: sublime-text-hide-tabs
 Date: 2013-02-22
-Category: posts
-Tags: node
+Category: other
+Status: published
 Author: Christopher Roach
 Summary: A post on the differences between node and traditional web server technology (i.e., an explanation of the node event loop).
 
