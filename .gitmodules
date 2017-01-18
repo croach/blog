@@ -4,3 +4,6 @@
 [submodule "themes/my-blog-theme"]
 	path = themes/my-blog-theme
 	url = https://github.com/croach/blog-theme.git
+[submodule "content/statistics-for-hackers"]
+	path = content/statistics-for-hackers
+	url = https://github.com/croach/statistics-for-hackers.git
