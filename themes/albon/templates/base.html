@@ -67,7 +67,7 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Articles<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
                         <ul class="dropdown-menu">
                             {% for category, articles in categories %}
                             <li>
@@ -79,22 +79,12 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ SITEURL }}/pages/about/">About Christopher</a></li>
-                            <li><a href="https://github.com/croach">GitHub</a></li>
-                            <li><a href="https://twitter.com/vthakr">Twitter</a></li>
-                            <li><a href="https://www.linkedin.com/in/vthakr">LinkedIn</a></li>
-                        </ul>
-                    </li>
-
                     {% if FEEDS_ON %}
                     <li class="dropdown">
                         {# The following IF statement keeps categorical feeds
                            from crashing when turned off, i.e., in dev #}
                         {% if CATEGORY_FEED_ATOM %}
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Feeds<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Feeds</span></a>
                         <ul class="dropdown-menu">
                             {% if FEED_ALL_ATOM %}
                             <li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}">All</a></li>
@@ -110,6 +100,17 @@
                         {% endif %}
                     </li>
                     {% endif %}
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ SITEURL }}/pages/about/">About Christopher</a></li>
+                            <li><a href="https://github.com/croach">GitHub</a></li>
+                            <li><a href="https://twitter.com/vthakr">Twitter</a></li>
+                            <li><a href="https://www.linkedin.com/in/vthakr">LinkedIn</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
 
             </div>
