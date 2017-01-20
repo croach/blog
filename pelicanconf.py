@@ -8,6 +8,9 @@ SITEURL = ''
 
 PATH = 'content'
 
+# The new github pages uses the master branch or the docs/ folder
+OUTPUT_PATH = 'docs/'
+
 TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = 'en'
