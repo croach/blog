@@ -27,6 +27,12 @@ FEEDS_ON = any([FEED_ALL_ATOM,
                 AUTHOR_FEED_RSS
 ])
 
+# URL templates for creating clean URLs (e.g., sitename.com/articles/slug/)
+ARTICLE_URL = 'articles/{slug}/'
+ARTICLE_SAVE_AS = 'articles/{slug}/index.html'
+PAGE_URL = 'pages/{slug}/'
+PAGE_SAVE_AS = 'pages/{slug}/index.html'
+
 # # Blogroll
 # LINKS = (('Pelican', 'http://getpelican.com/'),
 #          ('Python.org', 'http://python.org/'),
