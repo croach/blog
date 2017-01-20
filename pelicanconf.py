@@ -29,6 +29,7 @@ AUTHOR_FEED_RSS = None
 # SOCIAL = (('You can add links in your config file', '#'),
 #           ('Another social link', '#'),)
 
+# By default, all new content are drafts until status is set to 'published'
 DEFAULT_METADATA = {
     'status': 'draft',
 }
@@ -42,6 +43,7 @@ IGNORE_FILES = ['.ipynb_checkpoints', 'README.md']
 # Which files are considered to be markdown files
 MARKUP = ('md', 'ipynb')
 
+# Setup the plugins
 PLUGIN_PATHS = ('./plugins',)
 PLUGINS = ('ipynb.markup',)
 
@@ -51,5 +53,8 @@ DISPLAY_CATEGORIES_ON_MENU = True
 # Get rid of the index pages for tags and categories
 DIRECT_TEMPLATES = ['index', 'archives']
 
-THEME = "themes/my-blog-theme"
+# Specify the theme
+THEME = "themes/albon"
+
+# Ignore the CSS for jupyter notebooks, just use the one in the theme
 IPYNB_IGNORE_CSS = True

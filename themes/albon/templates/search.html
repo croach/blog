@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Seach {{ super() }}
+{% endblock title %}
+
+{% block head_description %}
+  Search results:
+{% endblock head_description %}
+
+{% block extra_css %}
+  <link href="{{ SITEURL }}/theme/tipuesearch/tipuesearch.css" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block extra_js %}
+  <script type="text/javascript" src="{{ SITEURL }}/theme/tipuesearch/tipuesearch_content.js"></script>
+  <script type="text/javascript" src="{{ SITEURL }}/theme/tipuesearch/tipuesearch_set.js"></script>
+  <script type="text/javascript" src="{{ SITEURL }}/theme/tipuesearch/tipuesearch.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('#tipue_search_input').tipuesearch({
+          'mode' : 'json',
+          'show': 1000,
+          'newWindow': false,
+          'contentLocation': '{{ SITEURL }}/tipuesearch_content.json'
+      });
+    });
+  </script>
+{% endblock extra_js %}
+
+{% block content %}
+<section id="content" class="body">
+    <div id="tipue_search_content"></div>
+</section>
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} - {{ article.category }}{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  {% if article.description %}
+    <meta name="description" content="{{article.description}}" />
+  {% endif %}
+
+  {% for tag in article.tags %}
+    <meta name="tags" content="{{tag}}" />
+  {% endfor %}
+
+{% endblock %}
+
+{% block content %}
+<!-- <div class="alert alert-warning" role="alert">
+    Did you find this page useful? Please do me a quick favor and <a href="#" class="alert-link">endorse me for data science on LinkedIn</a>.
+</div> -->
+<section id="content" class="body">
+    <header>
+    <h1>
+      {{ article.title }}
+    </h1>
+<ol class="breadcrumb">
+    <li>
+        <time class="published" datetime="{{ article.date.isoformat() }}">
+            {{ article.date.strftime("%d %B %Y") }}
+        </time>
+    </li>
+    <li>
+      <a href="{{ SITEURL }}/#{{ article.category.name }}">
+          {{ article.category.name | replace('-', ' ') | title }}
+      </a>
+    <!-- {% for tag in article.tags %}
+    <li><a href="{{ tag.url }}">{{ tag }}</a></li>
+    {% endfor %} -->
+</ol>
+</header>
+<div class='article_content'>
+{{ article.content }}
+</div>
+    <aside>
+    <div class="bug-reporting__panel">
+        <h3>Found an error with my analysis or a bug in my code?</h3>
+        <p>Everything on this site is avaliable on GitHub. Head on over and <a href='https://github.com/croach/blog/issues/new'>submit an issue.</a> You can also message me directly on <a href='https://twitter.com/vthakr'>Twitter</a>.</p>
+    </div>
+    </aside>
+</section>
+
+{% endblock %}

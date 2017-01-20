@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-header">
+  <h1 class="index-page-title">Musings on data science, machine learning, and software engineering</h1>
+</div>
+<div class="homepage-blurb row">
+    <div class="col-sm-12">
+        <p>Hello, my name is Christopher Roach and I am a <a href="{{ SITEURL }}/pages/about.html">software engineer and data enthusiast</a>.
+        This website contains a collection of my thoughts on topics such as data science, software engineering, and economics.</p>
+    </div>
+</div>
+
+{# Show the 10 most recent articles #}
+<div class="row" id="most-recent">
+  <div class="col-sm-12">
+    <h2 class="homepage_category_title">Most Recent</h2>
+  </div>
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <ul>
+          {% for article in articles[:10] %}
+            <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% for category, articles in categories %}
+<div class="row" id="{{ category.name }}">
+  <div class="col-sm-12">
+    <h2 class="homepage_category_title">{{ category.name | replace('-', ' ') | title }}</h2>
+  </div>
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <ul>
+          {% for article in articles %}
+            <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock content %}
