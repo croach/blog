@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Musings on data science and software engineering (and at times, economics as well)">
+    <meta name="author" content="Christopher Roach">
+    <!-- <link rel="icon" href="../favicon.ico"> -->
+
+    <title>Everything You Need to Know About Python Timezones - misc</title>
+
+    <!-- Google Analytics (make sure this comes before any script or CSS) -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-6474660-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="http://christopherroach.com/theme/js/jquery.min.js"><\/script>')
+    </script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://christopherroach.com/theme/css/bootstrap.css" />
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="http://christopherroach.com/theme/css/ie10-viewport-bug-workaround.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="http://christopherroach.com/theme/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="http://christopherroach.com/theme/css/notebooks.css" />
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700|Roboto:400,500,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="http://christopherroach.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="christopherroach.com Full Atom Feed" />         <link href="http://christopherroach.com/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="christopherroach.com Categories Atom Feed" />     
+
+    <meta name="tags" content="python" />
+
+
+</head>
+
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://christopherroach.com/">Christopher Roach</a>
+            </div>
+            <div class="navbar-collapse collapse" id="searchbar">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Articles<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="http://christopherroach.com/#node">
+                                    Node
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://christopherroach.com/#other">
+                                    Other
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://christopherroach.com/#statistics">
+                                    Statistics
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://christopherroach.com/pages/about/">About Christopher</a></li>
+                            <li><a href="https://github.com/croach">GitHub</a></li>
+                            <li><a href="https://twitter.com/vthakr">Twitter</a></li>
+                            <li><a href="https://www.linkedin.com/in/vthakr">LinkedIn</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <!-- end of header section -->
+    <div class="container">
+<!-- <div class="alert alert-warning" role="alert">
+    Did you find this page useful? Please do me a quick favor and <a href="#" class="alert-link">endorse me for data science on LinkedIn</a>.
+</div> -->
+<section id="content" class="body">
+    <header>
+    <h1>
+      Everything You Need to Know About Python Timezones
+    </h1>
+<ol class="breadcrumb">
+    <li>
+        <time class="published" datetime="2016-12-31T15:09:00-08:00">
+            31 December 2016
+        </time>
+    </li>
+    <li>
+      <a href="http://christopherroach.com/#misc">
+          Misc
+      </a>
+    <!--     <li><a href="tag/python.html">python</a></li>
+ -->
+</ol>
+</header>
+<div class='article_content'>
+<h3>Why Are Timezones Such a Pain in Python?</h3>
+<p>There are two main reasons why timezones are painful in Python. The
+first is simply that timezones are just a pain to deal with in general.
+The differences between the abstract concept of a date versus the
+pinpoint exactitude of a timestamp can be frustrating to deal with at
+best and can be the cause some very rousing debates in your team's
+architecture discussions. The default strategy to just make everything a
+UTC based timestamp sounds nice at first blush, but take, for example,
+an employee's start date. If we make this data type a UTC based
+timestamp in our database, what happens when we convert it into that
+employee's timezone? Without careful consideration, that employee may be
+reporting to work on Tuesday the 18th rather than Monday the 17th like
+you originally intended. Perhaps, in this situation, what you really
+wanted is something much more general, say a simple date instead of a
+full fledged timezone aware date and time. From this example, it's easy
+to see just how important forethought and planning are in getting your
+timezone strategy just right.</p>
+<p>The second reason that timezones can be an annoyance is much more
+specific to Python. While <span
+style="font-size: 10.0pt;line-height: 13.0pt;">Python comes with a
+library for supporting dates and times called
+<a href="http://docs.python.org/2/library/datetime.html">datetime</a>, its
+creators, in all their infinite wisdom, have essentially decided to punt
+on the topic of timezones. The datetime library does, however, provide a
+way for the user to hook their own implementation of a timezone object
+into the library. To this end, the tzinfo abstract class is provided.
+Luckily for us we don't have to worry about creating our own
+implementation though, since the creators of the
+<a href="http://pytz.sourceforge.net/">pytz</a> library have already taken care of
+that task for us. Given that pytz is the de facto standard in the Python
+world for dealing with timezones, the rest of this document will assume
+that you've already installed it in your local environment.</span></p>
+<h3>Python datetime Do's and Dont's</h3>
+<p>Don't use naive datetime objects - If you think you need a naive datetime
+object, perhaps you actually want a date object instead.</p>
+<p>Don't use localized datetime objects - Try to do everything in UTC if
+you can. If you can't, consider again whether you need a different data
+type such as a date.</p>
+<p>Don't do arithmetic on localized datetime objects - Try only to do
+arithmetic on UTC datetime objects, it's much cleaner since there is no
+such thing as daylight savings time.</p>
+<p>Do use
+<a href="http://pytz.sourceforge.net/#localized-times-and-date-arithmetic">normalize</a>
+after performing arithmetic on localized datetime objects - If you
+absolutely must do arithmetic on localized datetime objects, make sure
+you call the normalize method on the result. This should take care of
+any daylight savings time issues that come up.</p>
+<p>Don't do comparisons on localized datetime objects - Again, try,
+whenever possible, <a href="http://pytz.sourceforge.net/#problems-with-localtime">to do everything in UTC
+time</a> since it's
+safer than localized times and, if you must do the comparison on
+localized times, consider again if you're using the correct data type
+for the job.</p>
+<p>Do use
+dt.<a href="http://docs.python.org/2/library/datetime.html#datetime.datetime.astimezone">astimezone</a>(pytz.utc)
+before comparing datetime objects - Turn timezone aware datetime objects
+into UTC time before doing any work with them. The nice thing to is
+that, if the datetime object is already in UTC time, this call is
+essentially free since the astimezone function just returns the original
+object, so feel free to do this blindly to any datetime objects you
+have.</p>
+<p>Do be careful when using dt.replace(tzinfo=timezone) - Unlike the
+timezone.localize method, replace <a href="http://stackoverflow.com/questions/1379740/pytz-localize-vs-datetime-replace">tries to do some thinking for
+you</a>
+with respect to daylight savings time. It's safer just to work with UTC
+times or convert datetime objects using astimezone instead of trying to
+do so by hand.</p>
+<p>Don't use datetime(…, tzinfo=timezone) to create a timezone aware
+datetime object - Don't pass timezone object into the datetime
+constructor, it's
+<a href="http://pytz.sourceforge.net/#localized-times-and-date-arithmetic">broken</a>.
+Instead, create the datetime object and call timezone.localize on it.</p>
+<p>Do use timezone.localize(datetime(…)) to add a tzinfo object to a
+datetime object - Use the localize method to add a tzinfo object to a
+datetime object.</p>
+<p>Don't use timezone.localize for localizing datetime objects - The
+localize method probably doesn't do what you think it does. It simply
+replaces the tzinfo object on the datetime object and nothing more. If
+you want to convert a datetime object from one timezone to another, use
+the astimezone method.</p>
+<p>Do use dt.astimezone to localize datetime objects - This is the correct
+method to call to convert a datetime object from one timezone to
+another.</p>
+<p>Don't use datetime.utcnow() - This will always return a naive datetime
+object.</p>
+<p>Do use datetime.now(pytz.utc) - This is the preferred way to get the
+current UTC date and time since it will return a timezone aware datetime
+object.</p>
+<h3>Display Times in a Local Time Zone in MySQL</h3>
+<p>If you've ever wanted to see the times in a table in the local time
+zone, rather than calculating everything in your head, you're in luck.
+MySQL provides a function that will allow you to do just that, but you
+may have to do a little work first to get it to work.</p>
+<p>So, let's take a look at a simple query that uses the
+<a href="http://dev.mysql.com/doc/refman/5.1/en/date-and-time-functions.html#function_convert-tz">CONVERT_TZ</a>
+function that MySQL provides. The example query below shows the start
+and end times of every interview in the database in HireIn's default
+local time zone (i.e., 'US/Pacific' or 'California time').</p>
+<p>Simple <code>CONVERT_TZ</code> example:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">CONVERT_TZ</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">start_time</span><span class="p">,</span> <span class="s1">&#39;UTC&#39;</span><span class="p">,</span> <span class="s1">&#39;US/Pacific&#39;</span><span class="p">),</span>
+       <span class="n">CONVERT_TZ</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">end_time</span><span class="p">,</span> <span class="s1">&#39;UTC&#39;</span><span class="p">,</span> <span class="s1">&#39;US/Pacific&#39;</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">interviews</span> <span class="n">i</span><span class="p">;</span>
+</pre></div>
+
+
+<p>The <code>CONVERT_TZ</code> function is very simple, it just takes the DATETIME
+object you want to convert, the time zone to convert it from (in our
+case, this should always be 'UTC'), and the time zone to convert it to.</p>
+<p>Now, if you run this query and get back a bunch of NULL's, you have a
+little setup to do first before you can do the conversion. </p>
+<p>The problem that you're running into, is MySQL has a table that keeps track of
+what each of the time zones are and how to calculate the difference in times,
+but that table is currently empty. In fact, we can confirm that this is the
+case by taking a peak at the number of records in this table. If you'd like to
+do that, just execute the line below at the command line.</p>
+<p>Check if <code>time_zone</code> is populated</p>
+<div class="highlight"><pre><span></span>% <span class="nb">echo</span> <span class="s1">&#39;select count(*) from time_zone&#39;</span> <span class="p">|</span> mysql -uroot -p mysql
+</pre></div>
+
+
+<p>If you get back a zero when you execute the line above, the table is
+empty and needs to be populated for the <code>CONVERT_TZ</code> function to work
+properly.</p>
+<p>To populate the table, just execute the line below at the command line.</p>
+<p>Populate the <code>time_zone</code> table</p>
+<div class="highlight"><pre><span></span>% mysql_tzinfo_to_sql /usr/share/zoneinfo <span class="p">|</span> mysql -u root -p mysql
+</pre></div>
+
+
+<p>Once you've executed the line above, the table should be properly
+populated and you can verify this by once again running the command that
+checks the number of records in the <code>time_zone</code> table. If the number
+comes back greater than zero this time, the table is populated and the
+<code>CONVERT_TZ</code> function should now work. Go ahead and run the original
+SELECT statement from the beginning of this section and you should now
+be seeing all start and end times in the local time zone rather than the
+NULL's that you were seeing before.</p>
+<p>Before we leave this section, I'd like to point out that you don't have
+to use time zones to get the <code>CONVERT_TZ</code> function to work. Instead, you
+could just use offset times. So, for example, if we wanted to show the
+interview times in 'US/Pacific' time, we could just use the following
+SELECT statement with offsets instead of time zones.</p>
+<p><code>CONVERT_TZ</code> with offsets instead of time zones</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">CONVERT_TZ</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">start_time</span><span class="p">,</span> <span class="s1">&#39;+00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;-08:00&#39;</span><span class="p">),</span>
+       <span class="n">CONVERT_TZ</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">end_time</span><span class="p">,</span> <span class="s1">&#39;+00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;-08:00&#39;</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">interviews</span> <span class="n">i</span><span class="p">;</span>
+</pre></div>
+
+
+<p>This statement actually works without populating the time_zone table,
+so it'll work in a pinch if you don't want to take the time to run the
+population command, but keep in mind that you are specifying an exact
+offset, so this won't work across DST boundaries. For example, in the
+statement above, we specify an offset of 8 hours, so as long as we are
+looking at start and end times that occurred during standard time,
+everything will be correct, but if we wanted to look at some times
+during daylight savings time, what's returned will be off by one hour.
+Considering how easy it is to populate the <code>time_zone</code> table, the only
+reason I can see not to do it is if you don't have permissions to do
+(or, maybe you just forgot the root password).</p>
+<p>Ok, so maybe that was 10 minutes...</p>
+<h3>Helpful Links</h3>
+<ul>
+<li><a href="http://docs.python.org/2/library/datetime.html">datetime — Basic date and time
+    types</a></li>
+<li><a href="http://pytz.sourceforge.net/">pytz — World Timezone Definitions for
+    Python</a></li>
+<li><a href="http://pytz.sourceforge.net/#localized-times-and-date-arithmetic">Localized times and date
+    arithmetic</a></li>
+<li><a href="http://pytz.sourceforge.net/#problems-with-localtime">Problems with localized
+    time</a></li>
+<li><a href="http://dev.mysql.com/doc/refman/5.1/en/date-and-time-functions.html#function_convert-tz">MySQL CONVERT_TZ
+    function</a></li>
+</ul>
+</div>
+    <aside>
+    <div class="bug-reporting__panel">
+        <h3>Found an error with my analysis or a bug in my code?</h3>
+        <p>Everything on this site is avaliable on GitHub. Head on over and <a href='https://github.com/croach/blog/issues/new'>submit an issue.</a> You can also message me directly on <a href='https://twitter.com/vthakr'>Twitter</a>.</p>
+    </div>
+    </aside>
+</section>
+
+    </div>
+    <!-- start of footer section -->
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">
+                <center>All work is available on <a href="https://github.com/croach/blog">GitHub</a>.
+                <br/>
+                Copyright &copy; Christopher Roach, <time datetime="2017">2017</time>.
+                <br/>
+                Site powered by <a href="http://getpelican.com">pelican</a>, theme crafted by <a href="http://chrisalbon.com/">Chris Albon</a> (<a href="https://github.com/chrisalbon/notes_on_data_science_machine_learning_and_artificial_intelligence/tree/master/theme">GitHub</a>).
+                </center>
+            </p>
+        </div>
+    </footer>
+
+    <!-- This jQuery line finds any span that contains code highlighting classes and then selects the parent <pre> tag and adds a border. This is done as a workaround to visually distinguish the code inputs and outputs -->
+    <script>
+        $( ".hll, .n, .c, .err, .k, .o, .cm, .cp, .c1, .cs, .gd, .ge, .gr, .gh, .gi, .go, .gp, .gs, .gu, .gt, .kc, .kd, .kn, .kp, .kr, .kt, .m, .s, .na, .nb, .nc, .no, .nd, .ni, .ne, .nf, .nl, .nn, .nt, .nv, .ow, .w, .mf, .mh, .mi, .mo, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss, .bp, .vc, .vg, .vi, .il" ).parent( "pre" ).css( "border", "1px solid #DEDEDE" );
+    </script>
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://christopherroach.com/theme/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://christopherroach.com/theme/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
+</html>
