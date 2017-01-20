@@ -8,6 +8,9 @@ SITEURL = ''
 
 PATH = 'content'
 
+STATIC_PATHS = ['images', 'extra/CNAME']
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}}
+
 # The new github pages uses the master branch or the docs/ folder
 OUTPUT_PATH = 'docs/'
 
