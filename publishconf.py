@@ -16,6 +16,14 @@ RELATIVE_URLS = False
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
+# A boolean for checking if feeds are turned on
+FEEDS_ON = any([FEED_ALL_ATOM,
+                CATEGORY_FEED_ATOM,
+                TRANSLATION_FEED_ATOM,
+                AUTHOR_FEED_ATOM,
+                AUTHOR_FEED_RSS
+])
+
 DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
