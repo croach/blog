@@ -82,7 +82,7 @@ Tables
     margin: 1em 0 2em 0;
   }
 
-.body td, th{
+.body td, th {
     text-align:left;
     vertical-align:middle;
     padding:4px;
@@ -94,17 +94,19 @@ Tables
 Images
 ---------------------------------------------------------*/
 
- img{
+ img {
     max-width: 100%;
     height: auto;
     width: 100%\9; /* ie8 */
-    display:block;}
+    display:block;
+    margin: auto;
+}
 
 /* ---------------------------------------------------------
 Render Math
 ---------------------------------------------------------*/
 
-div.math{
+div.math {
     font-size: 1em;
 }
 
@@ -112,5 +114,6 @@ div.math{
 Inline Code
 ---------------------------------------------------------*/
 
- p code{
-    font-size: 14px;}
+ p code {
+    font-size: 14px;
+}

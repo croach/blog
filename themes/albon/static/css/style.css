@@ -74,6 +74,14 @@ body > .container {
   .navbar-header  {
       background:  #807dba;
   }
+
+  /* Turn off fixed navbar for mobile to give back some screen realestate */
+  .navbar-fixed-top {
+    position: relative;
+  }
+  body > .container {
+    padding-top: 0;
+  }
 }
 
 .navbar-toggle .icon-bar {
