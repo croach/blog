@@ -88,9 +88,27 @@
                         </ul>
                     </li>
 
+                    {% if FEEDS_ON %}
                     <li class="dropdown">
-                        <a href="{{ SITEURL }}/feeds/all.rss.xml">Feed</a>
+                        {# The following IF statement keeps categorical feeds
+                           from crashing when turned off, i.e., in dev #}
+                        {% if CATEGORY_FEED_ATOM %}
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Feeds<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% if FEED_ALL_ATOM %}
+                            <li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}">All</a></li>
+                            {% endif %}
+                            {% for category, articles in categories %}
+                            <li><a href="{{ SITEURL }}/{{ CATEGORY_FEED_ATOM % category.name }}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                            {% if FEED_ALL_ATOM %}
+                            <a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}">Feed</a>
+                            {% endif %}
+                        {% endif %}
                     </li>
+                    {% endif %}
                 </ul>
 
             </div>

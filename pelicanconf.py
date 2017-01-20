@@ -19,6 +19,14 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+# A boolean for checking if feeds are turned on
+FEEDS_ON = any([FEED_ALL_ATOM,
+                CATEGORY_FEED_ATOM,
+                TRANSLATION_FEED_ATOM,
+                AUTHOR_FEED_ATOM,
+                AUTHOR_FEED_RSS
+])
+
 # # Blogroll
 # LINKS = (('Pelican', 'http://getpelican.com/'),
 #          ('Python.org', 'http://python.org/'),
