@@ -7,3 +7,6 @@
 [submodule "content/statistics-for-hackers"]
 	path = content/statistics-for-hackers
 	url = https://github.com/croach/statistics-for-hackers.git
+[submodule "content/voter_fraud"]
+	path = content/voter_fraud
+	url = https://github.com/croach/trump_voter_fraud_analysis.git
