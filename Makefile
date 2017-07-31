@@ -1,5 +1,6 @@
 PY?=python3
-PELICAN?=pelican
+NBCONVERT_EXTENSION_PATH=$(VIRTUAL_ENV)/lib/python3.5/site-packages/jupyter_contrib_nbextensions/nbconvert_support
+PELICAN?=PYTHONPATH="$(PYTHONPATH):$(NBCONVERT_EXTENSION_PATH)"; pelican
 PELICANOPTS=
 
 BASEDIR=$(CURDIR)

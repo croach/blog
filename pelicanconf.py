@@ -78,4 +78,7 @@ THEME = "themes/albon"
 
 # Ignore the CSS for jupyter notebooks, just use the one in the theme
 IPYNB_IGNORE_CSS = True
-IPYNB_PREPROCESSORS = ['pre_pymarkdown.PyMarkdownPreprocessor']
+
+# Adding the PyMarkdown Preprocessor to allow for some light code pre-
+# processing within markdown cells
+IPYNB_PREPROCESSORS = ['jupyter_contrib_nbextensions.nbconvert_support.pre_pymarkdown.PyMarkdownPreprocessor']
