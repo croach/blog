@@ -90,7 +90,7 @@
                             <li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}">All</a></li>
                             {% endif %}
                             {% for category, articles in categories %}
-                            <li><a href="{{ SITEURL }}/{{ CATEGORY_FEED_ATOM % category.name }}">{{ category.name | title }}</a></li>
+                            <li><a href="{{ SITEURL }}/{{ CATEGORY_FEED_ATOM % category.slug }}">{{ category.name | title }}</a></li>
                             {% endfor %}
                         </ul>
                         {% else %}
