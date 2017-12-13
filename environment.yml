@@ -89,6 +89,7 @@ dependencies:
 - qt=5.6.2=h9975529_14
 - qtconsole=4.3.1=py36hd96c0ff_0
 - readline=7.0=h81b24a6_3
+- scikit-learn=0.19.1=py36hffbff8c_0
 - scipy=0.19.1=py36h3e758e1_3
 - setuptools=36.5.0=py36h2134326_0
 - simplegeneric=0.8.1=py36he5b5b09_0
