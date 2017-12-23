@@ -92,6 +92,9 @@ ENV/
 # Pelican server files
 *.pid
 
+# Pelican build files
+output/
+
 # emacs temp files
 \#*\#
 *~
