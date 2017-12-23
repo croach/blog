@@ -4,9 +4,7 @@
 
 `$ git clone --recursive https://github.com/croach/blog.git`
 
-    * If you've cloned the repository without the `--recursive` option, you can simply run the following command to setup all of the submodules.
-
-`$ git submodule update --init --recursive`
+> NOTE: If you've cloned the repository without the `--recursive` option, you can simply run `git submodule update --init --recursive` to setup all of the submodules.
 
 2. Create the conda environment from the environment file
 
