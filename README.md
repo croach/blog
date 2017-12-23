@@ -4,7 +4,7 @@
 
 `$ git clone --recursive https://github.com/croach/blog.git`
 
-1a. If you've cloned the repository without the `--recursive` option, you can simply run the following command to setup all of the submodules.
+    * If you've cloned the repository without the `--recursive` option, you can simply run the following command to setup all of the submodules.
 
 `$ git submodule update --init --recursive`
 
@@ -22,5 +22,5 @@
 # To Do
 
 1. Add the data files to the voter_fraud repository
-2. Remove danielfrg's `pelican-ipynb` from my list of submodules and add my own forked version of the library and use the `add_preprocessor_support` branch.
-3. Remove my old theme from the list of submodules as well.
+2. ~~Remove danielfrg's `pelican-ipynb` from my list of submodules and add my own forked version of the library and use the `add_preprocessor_support` branch.~~
+3. ~~Remove my old theme from the list of submodules as well.~~

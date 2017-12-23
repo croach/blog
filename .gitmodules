@@ -4,3 +4,6 @@
 [submodule "content/voter_fraud"]
 	path = content/voter_fraud
 	url = https://github.com/croach/trump_voter_fraud_analysis.git
+[submodule "plugins/ipynb"]
+	path = plugins/ipynb
+	url = https://github.com/croach/pelican-ipynb.git
