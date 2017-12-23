@@ -1,9 +1,3 @@
-[submodule "plugins/ipynb"]
-	path = plugins/ipynb
-	url = git://github.com/danielfrg/pelican-ipynb.git
-[submodule "themes/old-blog-theme"]
-	path = themes/old-blog-theme
-	url = https://github.com/croach/blog-theme.git
 [submodule "content/statistics-for-hackers"]
 	path = content/statistics-for-hackers
 	url = https://github.com/croach/statistics-for-hackers.git
