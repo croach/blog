@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>christopherroach.com - Jupyter</title><link href="http://christopherroach.com/" rel="alternate"></link><link href="http://christopherroach.com/feeds/jupyter.atom.xml" rel="self"></link><id>http://christopherroach.com/</id><updated>2018-01-18T00:00:00-08:00</updated><entry><title>Running Jupyter Lab as a Desktop Application</title><link href="http://christopherroach.com/articles/jupyterlab-desktop-app/" rel="alternate"></link><published>2018-01-18T00:00:00-08:00</published><updated>2018-01-18T00:00:00-08:00</updated><author><name>Christopher Roach</name></author><id>tag:christopherroach.com,2018-01-18:/articles/jupyterlab-desktop-app/</id><summary type="html">&lt;p&gt;A quick post on how to run Jupyter Lab using Chrome's app mode&lt;/p&gt;</summary><content type="html">&lt;p&gt;So, &lt;a href="https://jupyterlab-tutorial.readthedocs.io/en/latest/index.html"&gt;Jupyter Lab&lt;/a&gt; is starting to get really interesting as a day-to-day replacement for standard Jupyter Notebooks and as a python competitor to R’s &lt;a href="https://www.rstudio.com/products/RStudio/"&gt;RStudio IDE&lt;/a&gt;. But, while a Jupyter Notebook with its multi-page interface feels right at home in the browser, I feel that as a single page application, Jupyter Lab would work better as a standalone desktop app without all the unwanted “chrome” that comes with the standard web browser. Luckily, the Chrome browser has an application mode that allows it to run with all of the toolbars and unnecessary UI removed. Using this mode will give you back a good deal of screen real estate and make Jupyter Lab feel more like a native application rather than a website running inside of your browser. &lt;/p&gt;
+&lt;p&gt;To use the application mode of Chrome with Jupyter Lab, you simply need to run the Jupyter Lab server with the &lt;code&gt;--no-browser&lt;/code&gt; option to prevent it from popping open the application in your default browser.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ jupyter lab --no-browser
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then, copy the URL printed out to the terminal (example below).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+[I 09:36:41.608 LabApp] The Jupyter Notebook is running at:
+[I 09:36:41.608 LabApp] http://localhost:8888/?token=&amp;lt;token&amp;gt;
+[I 09:36:41.608 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 09:36:41.609 LabApp]
+
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=&amp;lt;token&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And, to &lt;a href="https://stackoverflow.com/questions/16124877/how-do-you-hide-the-address-bar-in-google-chrome-for-chrome-apps"&gt;open Chrome in application mode&lt;/a&gt; with the Jupyter Lab URL, you simply need to call it with the &lt;code&gt;--app=&amp;lt;URL&amp;gt;&lt;/code&gt; option and pass the URL you just copied. &lt;/p&gt;
+&lt;p&gt;On a Mac, the command to do so would look like the following.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ /Applications/Google&lt;span class="se"&gt;\ &lt;/span&gt;Chrome.app/Contents/MacOS/Google&lt;span class="se"&gt;\ &lt;/span&gt;Chrome --app&lt;span class="o"&gt;=&lt;/span&gt;http://localhost:8888/?token&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;token&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once you run the command, you should see something like the following window pop up.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Jupyter Lab Running in App Mode" src="/images/jupyterlab_desktop_app/jupyterlab_app_mode.png"&gt;&lt;/p&gt;
+&lt;p&gt;Notice the distinct lack of any and all toolbars. In fact, the only toolbar that shows up is the set of menus in the Jupyter Lab application.&lt;/p&gt;
+&lt;h2&gt;Making the change permanent&lt;/h2&gt;
+&lt;p&gt;Now, if running two commands with a few extra options every time you want to open up Jupyter Lab happens to be a bit too much for you, you’re in luck. You can make this behavior permanent by simply modifying the config to change the default browser for Jupyter Lab.&lt;/p&gt;
+&lt;p&gt;If you’ve modified your default Jupyter Notebook configuration in the past, you can simply open up the configuration file that already exists (&lt;code&gt;~/.jupyter/jupyter_notebook_config.py&lt;/code&gt;) and add the following line to it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;LabApp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;browser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app=&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;However, if this is your first time ever modifying your Jupyter Notebook configuation, you’ll probably need to generate it first. You can do so with the following command.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ jupyter lab --generate-config
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After generating the config, simply open up the newly created file and add the browser config line from above. Once you’ve modified the config, you can simply call &lt;code&gt;jupyter lab&lt;/code&gt; and the app will open up in a pristine window devoid of all the typical bells and whistles.&lt;/p&gt;</content><category term="jupyter"></category></entry></feed>

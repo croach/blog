@@ -72,6 +72,11 @@ ga('send', 'pageview');
                                 </a>
                             </li>
                             <li>
+                                <a href="http://christopherroach.com/#Jupyter">
+                                    Jupyter
+                                </a>
+                            </li>
+                            <li>
                                 <a href="http://christopherroach.com/#node">
                                     Node
                                 </a>
@@ -94,6 +99,7 @@ ga('send', 'pageview');
                         <ul class="dropdown-menu">
                             <li><a href="http://christopherroach.com/feeds/all.atom.xml">All</a></li>
                             <li><a href="http://christopherroach.com/feeds/data-analysis.atom.xml">Data Analysis</a></li>
+                            <li><a href="http://christopherroach.com/feeds/jupyter.atom.xml">Jupyter</a></li>
                             <li><a href="http://christopherroach.com/feeds/node.atom.xml">Node</a></li>
                             <li><a href="http://christopherroach.com/feeds/other.atom.xml">Other</a></li>
                             <li><a href="http://christopherroach.com/feeds/statistics.atom.xml">Statistics</a></li>
@@ -145,9 +151,9 @@ ga('send', 'pageview');
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
@@ -158,36 +164,38 @@ ga('send', 'pageview');
 
 <span class="c1"># Use the following only if you are on a high definition device</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">set_matplotlib_formats</span>
-<span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">'retina'</span><span class="p">)</span>
+<span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">&#39;retina&#39;</span><span class="p">)</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Resources">Resources<a class="anchor-link" href="#Resources">¶</a></h2><p><a href="http://stackoverflow.com/questions/13865596/quantile-quantile-plot-using-scipy">http://stackoverflow.com/questions/13865596/quantile-quantile-plot-using-scipy</a></p>
+<h2 id="Resources">Resources<a class="anchor-link" href="#Resources">&#182;</a></h2><p><a href="http://stackoverflow.com/questions/13865596/quantile-quantile-plot-using-scipy">http://stackoverflow.com/questions/13865596/quantile-quantile-plot-using-scipy</a></p>
 <p>I just need a bit more text here for checking the mobile CSS.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">percentile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">"""Returns the value of the p-ith percentile for the given dataset</span>
+    <span class="sd">&quot;&quot;&quot;Returns the value of the p-ith percentile for the given dataset</span>
 <span class="sd">    </span>
 <span class="sd">    Taken from this paper: http://stanford.io/2bk0k8u</span>
 <span class="sd">    </span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">p</span> <span class="o">>=</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -196,34 +204,44 @@ ga('send', 'pageview');
     <span class="c1"># If the index is an interger value, return the corresponding</span>
     <span class="c1"># value in the dataset as x. Otherwise, interoplate x.</span>
     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="n">i</span><span class="p">:</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">></span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">></span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">)</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
     
     <span class="k">return</span> <span class="n">x</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">percentile</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>2.14
 2.28
@@ -320,54 +338,74 @@ ga('send', 'pageview');
 </pre>
 </div>
 </div>
-<div class="output_area"><div class="prompt"></div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_text output_error">
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">IndexError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg"><ipython-input-5-676682838814></span> in <span class="ansi-cyan-fg"><module></span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-5-676682838814&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> test_data <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">9</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">14</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">9</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">7</span><span class="ansi-blue-fg">]</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">for</span> i <span class="ansi-green-fg">in</span> range<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">101</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">----> 3</span><span class="ansi-red-fg">     </span>print<span class="ansi-blue-fg">(</span>percentile<span class="ansi-blue-fg">(</span>test_data<span class="ansi-blue-fg">,</span> i<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg">     </span>print<span class="ansi-blue-fg">(</span>percentile<span class="ansi-blue-fg">(</span>test_data<span class="ansi-blue-fg">,</span> i<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg"><ipython-input-2-71a4f4a45a84></span> in <span class="ansi-cyan-fg">percentile</span><span class="ansi-blue-fg">(data, p)</span>
-<span class="ansi-green-intense-fg ansi-bold">     21</span>         k <span class="ansi-blue-fg">=</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span> <span class="ansi-green-fg">if</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span> <span class="ansi-blue-fg">></span> <span class="ansi-cyan-fg">0</span> <span class="ansi-green-fg">else</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">&lt;ipython-input-2-71a4f4a45a84&gt;</span> in <span class="ansi-cyan-fg">percentile</span><span class="ansi-blue-fg">(data, p)</span>
+<span class="ansi-green-intense-fg ansi-bold">     21</span>         k <span class="ansi-blue-fg">=</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span> <span class="ansi-green-fg">if</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span> <span class="ansi-blue-fg">&gt;</span> <span class="ansi-cyan-fg">0</span> <span class="ansi-green-fg">else</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">     22</span>         f <span class="ansi-blue-fg">=</span> i <span class="ansi-blue-fg">-</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---> 23</span><span class="ansi-red-fg">         </span>x <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span> <span class="ansi-blue-fg">-</span> f<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">*</span>data<span class="ansi-blue-fg">[</span>k<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">+</span> f<span class="ansi-blue-fg">*</span>data<span class="ansi-blue-fg">[</span>k <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">---&gt; 23</span><span class="ansi-red-fg">         </span>x <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span> <span class="ansi-blue-fg">-</span> f<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">*</span>data<span class="ansi-blue-fg">[</span>k<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">+</span> f<span class="ansi-blue-fg">*</span>data<span class="ansi-blue-fg">[</span>k <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span>
 <span class="ansi-green-intense-fg ansi-bold">     24</span> 
 <span class="ansi-green-intense-fg ansi-bold">     25</span>     <span class="ansi-green-fg">return</span> x
 
 <span class="ansi-red-fg">IndexError</span>: list index out of range</pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">percentile</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
 <div class="output_text output_subarea output_execute_result">
 <pre>14</pre>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">qqplot</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">percentile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
@@ -379,62 +417,74 @@ ga('send', 'pageview');
 <span class="c1">#     y = np.percentile(data, 25), np.percentile(data, 75)</span>
 <span class="c1">#     x = </span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qqplot</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_text output_error">
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">IndexError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg"><ipython-input-10-84deb668443a></span> in <span class="ansi-cyan-fg"><module></span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----> 1</span><span class="ansi-red-fg"> </span>qqplot<span class="ansi-blue-fg">(</span>test_data<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">&lt;ipython-input-10-84deb668443a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>qqplot<span class="ansi-blue-fg">(</span>test_data<span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg"><ipython-input-7-98caeba30d38></span> in <span class="ansi-cyan-fg">qqplot</span><span class="ansi-blue-fg">(data)</span>
+<span class="ansi-green-fg">&lt;ipython-input-7-98caeba30d38&gt;</span> in <span class="ansi-cyan-fg">qqplot</span><span class="ansi-blue-fg">(data)</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">def</span> qqplot<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span>     x <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>norm<span class="ansi-blue-fg">.</span>ppf<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> np<span class="ansi-blue-fg">.</span>arange<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0.0</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">1.01</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0.01</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">----> 3</span><span class="ansi-red-fg">     </span>y <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>percentile<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> np<span class="ansi-blue-fg">.</span>arange<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">101</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg">     </span>y <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>percentile<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> np<span class="ansi-blue-fg">.</span>arange<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">101</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span>
 <span class="ansi-green-intense-fg ansi-bold">      4</span>     plt<span class="ansi-blue-fg">.</span>scatter<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">,</span> y<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">      5</span> 
 
-<span class="ansi-green-fg"><ipython-input-7-98caeba30d38></span> in <span class="ansi-cyan-fg"><listcomp></span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-fg">&lt;ipython-input-7-98caeba30d38&gt;</span> in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">def</span> qqplot<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span>     x <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>norm<span class="ansi-blue-fg">.</span>ppf<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> np<span class="ansi-blue-fg">.</span>arange<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0.0</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">1.01</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0.01</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">----> 3</span><span class="ansi-red-fg">     </span>y <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>percentile<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> np<span class="ansi-blue-fg">.</span>arange<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">101</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg">     </span>y <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>percentile<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> np<span class="ansi-blue-fg">.</span>arange<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">101</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span>
 <span class="ansi-green-intense-fg ansi-bold">      4</span>     plt<span class="ansi-blue-fg">.</span>scatter<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">,</span> y<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">      5</span> 
 
-<span class="ansi-green-fg"><ipython-input-2-71a4f4a45a84></span> in <span class="ansi-cyan-fg">percentile</span><span class="ansi-blue-fg">(data, p)</span>
-<span class="ansi-green-intense-fg ansi-bold">     21</span>         k <span class="ansi-blue-fg">=</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span> <span class="ansi-green-fg">if</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span> <span class="ansi-blue-fg">></span> <span class="ansi-cyan-fg">0</span> <span class="ansi-green-fg">else</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">&lt;ipython-input-2-71a4f4a45a84&gt;</span> in <span class="ansi-cyan-fg">percentile</span><span class="ansi-blue-fg">(data, p)</span>
+<span class="ansi-green-intense-fg ansi-bold">     21</span>         k <span class="ansi-blue-fg">=</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span> <span class="ansi-green-fg">if</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span> <span class="ansi-blue-fg">&gt;</span> <span class="ansi-cyan-fg">0</span> <span class="ansi-green-fg">else</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">     22</span>         f <span class="ansi-blue-fg">=</span> i <span class="ansi-blue-fg">-</span> int<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---> 23</span><span class="ansi-red-fg">         </span>x <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span> <span class="ansi-blue-fg">-</span> f<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">*</span>data<span class="ansi-blue-fg">[</span>k<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">+</span> f<span class="ansi-blue-fg">*</span>data<span class="ansi-blue-fg">[</span>k <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">---&gt; 23</span><span class="ansi-red-fg">         </span>x <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span> <span class="ansi-blue-fg">-</span> f<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">*</span>data<span class="ansi-blue-fg">[</span>k<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">+</span> f<span class="ansi-blue-fg">*</span>data<span class="ansi-blue-fg">[</span>k <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span>
 <span class="ansi-green-intense-fg ansi-bold">     24</span> 
 <span class="ansi-green-intense-fg ansi-bold">     25</span>     <span class="ansi-green-fg">return</span> x
 
 <span class="ansi-red-fg">IndexError</span>: list index out of range</pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [14]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">qqline</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
     <span class="c1"># Calculate the slope and intercept of the...</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">75</span><span class="p">)])</span>
@@ -446,18 +496,20 @@ ga('send', 'pageview');
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="n">step</span><span class="p">)])</span>
     <span class="c1">#x = np.array([norm.ppf(percentileofscore(data, s) * 100) for s in sorted(data)])</span>
     <span class="c1">#m, b = np.polyfit(x, data, 1)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">m</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="s1">'black'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">m</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
     
 </pre></div>
+
 </div>
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [15]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">qqplot</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 <span class="c1">#     x = [norm.ppf(0.00000001)] + \</span>
 <span class="c1">#         [norm.ppf(p) for p in np.arange(0.01, 1.0, 0.01)] + \</span>
@@ -473,25 +525,37 @@ ga('send', 'pageview');
 <span class="c1">#     y = np.percentile(data, 25), np.percentile(data, 75)</span>
 <span class="c1">#     x = </span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qqplot</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
 <div class="output_png output_subarea ">
-<img height="356" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAYAAALJCAYAAAAnNCGCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAYAAALJCAYAAAAnNCGCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAewgAAHsIBbtB1PgAAIABJREFUeJzs3Xl4VdW9//H3NkAgAeuUIg0WSxVRBCJ4tQ7UH1wjVqu2
 jdYWK9XWgliwqKB1BKkW54Jwm6ZOrS1Wr5LbWvWqYLmaYqsWkKIIqHGCKsahyiEy798fZ8hOyEyS
 k+S8X8/Dk73XXnvvlad5bM4na61vEIYhkiRJkiQpM+2W7gFIkiRJkqT0MRiQJEmSJCmDGQxIkiRJ
@@ -1069,27 +1133,40 @@ YAAAAAAmTDAAAAAAEyYYAAAAgAkTDAAAAMCECQYAAABgwgQDAAAAMGGCAQAAAJgwwQAAAABMmGAA
 AAAAJkwwAAAAABMmGAAAAIAJEwwAAADAhAkGAAAAYMIEAwAAADBhggEAAACYMMEAAAAATJhgAAAA
 ACZMMAAAAAATJhgAAACACRMMAAAAwIQJBgAAAGDCBAMAAAAwYYIBAAAAmDDBAAAAAEwdF5s1AAAA
 BklEQVTY7x63AzeHWOl5AAAAAElFTkSuQmCC
-" width="515">
-</img></div>
+" width="515" height="356">
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [17]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qqplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100000</span><span class="p">))</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
 <div class="output_png output_subarea ">
-<img height="356" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAYAAALJCAYAAAAnNCGCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAYAAALJCAYAAAAnNCGCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAewgAAHsIBbtB1PgAAIABJREFUeJzs3Xt8nHWd6PHPQ9sEkkYu7dDWBIsIerAQxqJ7dtcWt25T
 WBSExgsU5bZaWkCX48LuObueA6hn9yjFtQsSBpcF1LCsaFpuiqQsLgEVXUprS70SwE22QFpQM4z0
 gs/545lJnkwnaVqSuX7er1dfeS6/Z+Y3L/p60fnmewnCMESSJEmSJNWmA0q9AUmSJEmSVDoGBiRJ
@@ -1649,42 +1726,57 @@ b5I8mOTeqa+fRgwAAADAjFl8EAAAAGZMMAAAAAAzJhgAAACAGRMMAAAAwIwJBgAAAGDGBAMAAAAw
 Y4IBAAAAmDHBAAAAAMyYYAAAAABmTDAAAAAAMyYYAAAAgBkTDAAAAMCMCQYAAABgxgQDAAAAMGOC
 AQAAAJgxwQAAAADMmGAAAAAAZkwwAAAAADMmGAAAAIAZEwwAAADAjAkGAAAAYMYEAwAAADBjggEA
 AACYMcEAAAAAzJhgAAAAAGbsf1zfTqaTR8gNAAAAAElFTkSuQmCC
-" width="515">
-</img></div>
+" width="515" height="356">
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [18]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">qqplot</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)]</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [20]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qqplot</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
 <div class="output_png output_subarea ">
-<img height="356" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAEAAALJCAYAAADF6Dr7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAEAAALJCAYAAADF6Dr7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAewgAAHsIBbtB1PgAAIABJREFUeJzs3X2UnNdd4PnvxZI6lLrNi1WxhTRo4tjhJWN10Rogg1sB
 LW7sbI4NSbEvbs0kJHhsNy+7wEjJ7MJiKzs7MxABYcic3mZxwJMpkWWPixBC1oqc6dlTBA7JqNMt
 hRCC00FEwlHKZgxdLtKSlbt/PE+rn35/Uddb1/dzTp967n3uferXSZ9j1a/u/d0QY0SSJEmSJG1/
@@ -2203,27 +2295,40 @@ kiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJ
 kqQuYRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQu
 YRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQuYRNAkiRJkqQu8f8Dy0vQ+7eiWdIAAAAASUVORK5C
 YII=
-" width="512">
-</img></div>
+" width="512" height="356">
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [21]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qqplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100000</span><span class="p">))</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
 <div class="output_png output_subarea ">
-<img height="356" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAYAAALJCAYAAAAnNCGCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAYAAALJCAYAAAAnNCGCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAewgAAHsIBbtB1PgAAIABJREFUeJzs3X+UnfV9H/j3kxGSrR+2YjQGKnnBAuolMWIs0m4bI4iI
 pcjF0MI0v8zZ1jlNqFBSUF3JbRMn4KSbXTBkreOl6rSbuu2u3HVbBIvBZioorG/SbOJFsoyLY1IE
 LNISGLAhukwsAX72j3svc+dqfor5ded5vc7Ruc9z7/fe+51jHR/mre/n8ynKsgwAAABQTT803xsA
@@ -2629,38 +2734,53 @@ AADoMcEAAAAA9JhgAAAAAHpMMAAAAAA9JhgAAACAHhMMAAAAQI8JBgAAAKDHBAMAAADQY4IBAAAA
 6DHBAAAAAPSYYAAAAAB6TDAAAAAAPSYYAAAAgB4TDAAAAECPCQYAAACgxwQDAAAA0GOCAQAAAOgx
 wQAAAAD0mGAAAAAAekwwAAAAAD0mGAAAAIAeEwwAAABAjwkGAAAAoMcEAwAAANBjggEAAADosf8P
 TezUu/vCd7wAAAAASUVORK5CYII=
-" width="515">
-</img></div>
+" width="515" height="356">
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [22]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">probplot</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [24]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
-<div class="input_area">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">probplot</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">plt</span><span class="p">);</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
 <div class="output_png output_subarea ">
-<img height="390" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABDgAAAMMCAYAAAC2XBe6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABDgAAAMMCAYAAAC2XBe6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAewgAAHsIBbtB1PgAAIABJREFUeJzs3XeYXGX5//H3vUtCCQEpCSShSTNKCJDQa5BOMBF/fkVU
 EhJKCEWwYQGFoF/giw0FwVDSQAUURJCAdAWp0kIxgPQkIEFAQk3YfX5/nFlnsm6Zzc7O2dl9v65r
 rpl59jln7tk5Ruaz93lOpJSQJEmSJEmqZXV5FyBJkiRJktRZBhySJEmSJKnmGXBIkiRJkqSaZ8Ah
@@ -3412,17 +3532,23 @@ JEmSpLZngkOSJEmSJLU9ExySJEmSJKntmeCQJEmSJEltzwSHJEmSJElqeyY4JEmSJElS2zPBIUmS
 JEmS2p4JDkmSJEmS1PZMcEiSJEmSpLZngkOSJEmSJLU9ExySJEmSJKntmeCQJEmSJEltzwSHJEmS
 JElqeyY4JEmSJElS2zPBIUmSJEmS2p4JDkmSJEmS1PZMcEiSJEmSpLZngkOSJEmSJLW9/w+oGTKo
 pr+RvgAAAABJRU5ErkJggg==
-" width="540">
-</img></div>
+" width="540" height="390">
+</div>
+
+</div>
+
 </div>
 </div>
+
 </div>
-</div>
+ 
+
+
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
