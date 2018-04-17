@@ -40,6 +40,19 @@
 <div class='article_content'>
 {{ article.content }}
 </div>
+<div>
+    {%- if article.github is defined or article.binder is defined -%}
+        <em>This article was written in its entirety as a Jupyter Notebook.
+            {%- if article.github is defined and article.binder is defined -%}
+                You can view the code for this article on <a href="{{ article.github }}">GitHub</a> and execute the notebook on <a href="{{ article.binder }}">Binder</a>.
+            {%- elif article.github is defined -%}
+                You can view the code for this article on <a href="{{ article.github }}">GitHub</a>.
+            {%- elif article.binder is defined -%}
+                 You can execute the notebook on <a href="{{ article.binder }}">Binder</a>.
+            {%- endif -%}
+        </em>
+    {%- endif -%}
+</div>
     <aside>
     <div class="bug-reporting__panel">
         <h3>Found an error with my analysis or a bug in my code?</h3>
