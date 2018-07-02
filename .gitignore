@@ -98,3 +98,6 @@ output/
 # emacs temp files
 \#*\#
 *~
+
+# R files
+.Rhistory
