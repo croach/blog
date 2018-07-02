@@ -61,11 +61,12 @@ DEFAULT_METADATA = {
 IGNORE_FILES = ['.ipynb_checkpoints', 'README.md']
 
 # Which files are considered to be markdown files
-MARKUP = ('md', 'ipynb')
+MARKUP = ('md', 'ipynb', 'Rmd', 'rmd')
 
 # Setup the plugins
 PLUGIN_PATHS = ('./plugins',)
-PLUGINS = ('ipynb.markup',)
+PLUGINS = ('ipynb.markup',
+           'rmd_reader')
 
 # Turn on categories
 DISPLAY_CATEGORIES_ON_MENU = True
@@ -82,3 +83,7 @@ IPYNB_IGNORE_CSS = True
 # Adding the PyMarkdown Preprocessor to allow for some light code pre-
 # processing within markdown cells
 IPYNB_PREPROCESSORS = ['jupyter_contrib_nbextensions.nbconvert_support.pre_pymarkdown.PyMarkdownPreprocessor']
+
+
+#RMD_READER_RENAME_PLOT = 'directory'
+#RMD_READER_KNITR_OPTS_CHUNK = {'fig.path': 'images/'}

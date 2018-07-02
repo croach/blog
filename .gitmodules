@@ -7,3 +7,6 @@
 [submodule "plugins/ipynb"]
 	path = plugins/ipynb
 	url = https://github.com/croach/pelican-ipynb.git
+[submodule "rmd_reader"]
+	path = plugins/rmd_reader
+	url = https://github.com/croach/rmd_reader.git
