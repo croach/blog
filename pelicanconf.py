@@ -77,7 +77,7 @@ DIRECT_TEMPLATES = ['index', 'archives']
 THEME = "themes/albon"
 
 # Ignore the CSS for jupyter notebooks, just use the one in the theme
-IPYNB_IGNORE_CSS = True
+IPYNB_SKIP_CSS = True
 
 # Adding the PyMarkdown Preprocessor to allow for some light code pre-
 # processing within markdown cells
