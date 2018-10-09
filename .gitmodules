@@ -7,6 +7,6 @@
 [submodule "plugins/ipynb"]
 	path = plugins/ipynb
 	url = https://github.com/croach/pelican-ipynb.git
-[submodule "content/data_science_for_daddies"]
-	path = content/data_science_for_daddies
-	url = https://github.com/croach/data_science_for_daddies.git
+[submodule "content/forecasting_for_everyday_problems"]
+	path = content/forecasting_for_everyday_problems
+	url = https://github.com/croach/forecasting_for_everyday_problems.git
